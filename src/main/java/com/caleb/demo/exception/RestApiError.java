@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.ToString;
 import org.springframework.http.HttpStatus;
 
+// For some reason lombok is not working here, so constructor, getter and setter are created
+// manually
 @Data
 @AllArgsConstructor
 @ToString
