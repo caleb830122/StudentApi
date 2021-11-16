@@ -2,6 +2,8 @@ package com.caleb.demo.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,9 +48,12 @@ public class StudentController {
 		return ResponseEntity.ok().body(studentService.getStudent(id));
 	}
 	
+	// Practice how to change the response status code
 	@PostMapping("/student")
 	public ResponseEntity<Student> addStudent(@RequestBody Student student) {
-		return ResponseEntity.ok().body(studentService.addStudent(student));	
+		
+		// By changing the ResponseEntity.ok() to .created, we can change the response code accordingly
+		return ResponseEntity.created(null).body(studentService.addStudent(student));	
 	}
 
 	@PutMapping("/student/{id}")
@@ -57,7 +62,7 @@ public class StudentController {
 		return ResponseEntity.ok().body(studentService.updateStudent(student));
 	}
 	
-	//Question mark ? wildcard
+	//Question mark ? wildcard object mark
 	@DeleteMapping("/student/{id}")
 	public HttpStatus deleteStudent(@PathVariable int id) {
 		studentService.deleteStudent(id);
