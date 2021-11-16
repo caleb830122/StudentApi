@@ -52,7 +52,7 @@ public class StudentController {
 	@PostMapping("/student")
 	public ResponseEntity<Student> addStudent(@RequestBody Student student) {
 		
-		// By changing the ResponseEntity.ok() to .created, we can change the response code accordingly
+		// By changing the ResponseEntity.ok() to .created, 
 		return ResponseEntity.created(null).body(studentService.addStudent(student));	
 	}
 

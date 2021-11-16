@@ -80,11 +80,14 @@ public class StudentService {
 	 */
 	public void deleteStudent(int id) {
 		Optional<Student> studentInDB = repo.findById(id);
-		
 		if (studentInDB.isPresent()) {
 			repo.deleteById(id);
 		} else {
-			throw new ResourceNotFoundException("Student with id:" + id + "is not exist");
+			throw new ResourceNotFoundException("Student with id: " + id + " is not exist");
 		}
+	}
+	
+	public StudentRepo getRepo() {
+		return this.repo;
 	}
 }
