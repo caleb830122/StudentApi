@@ -13,8 +13,9 @@ import com.caleb.demo.model.Student;
 import com.caleb.demo.service.StudentService;
 
 
-
+// Not supposed to use CrossOrigin("*") in production, should specify a route
 @RestController
+@CrossOrigin("localhost:8080")
 public class StudentController {
 
 	// Spring injects Student Service when controller is created
