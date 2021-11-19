@@ -14,6 +14,7 @@ public class StudentApiApplication {
 		SpringApplication.run(StudentApiApplication.class, args);
 	}
 	
+	
 	@Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurerAdapter() {

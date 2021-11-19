@@ -1,5 +1,8 @@
 .App {
-  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem));
+  gap: 2rem;
+  justify-content: center;
 }
 
 .App-logo {
@@ -35,4 +38,41 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.card {
+  overflow: hidden;
+  box-shadow: 0 2px 20px #e1e5ee;
+  border-radius: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 200ms ease-in;
+}
+
+.card__id {
+  padding: 1rem;
+}
+.card .card__button {
+  padding: 1rem;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 1rem;
+  border: 2px solid #1231dd;
+  background: transparent;
+  color: #1231dd;
+  border-radius: 0.2rem;
+  transition: background 200ms ease-in, color 200ms ease-in;
+}
+
+:hover .card__body{
+  transform: scale(1.02);
+}
+
+:hover .card__button {
+  background: #1231dd;
+  color: white;
+
 }
