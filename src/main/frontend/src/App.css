@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.bg-myPurple {
+  background: purple;
+}
+
+.StudentsList {
+  margin: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
