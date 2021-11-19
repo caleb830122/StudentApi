@@ -41,8 +41,16 @@
   background: purple;
 }
 
-.StudentsList {
+.student-list {
   margin: 2rem;
   flex-wrap: wrap;
-  justify-content: center;
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+.student-form {
+  margin: 2rem;
+  flex-wrap: wrap;
+  max-width: 70rem;
+  margin: 0 auto;
 }

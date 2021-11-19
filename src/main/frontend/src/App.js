@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import axios from 'axios';
 import {Navbar, Container, Nav, NavDropdown, Button, Table, Form} from 'react-bootstrap';
+import StudentForm from './components/students';
 const Students = () => {
 
   // Similar to create a state object
@@ -23,37 +24,12 @@ const Students = () => {
   return studentProfiles.map((studentProfile, index) => {
     
     return (
-      // <div key = {index}>
-      //   <div>
-      //     <h2>{studentProfile.id}</h2>
-      //     <p>{studentProfile.firstName}</p>
-      //     <p>{studentProfile.lastName}</p>
-      //   </div>
-      //   <button>Delete</button>
-      //   {/* <h1>{studentProfile.id}</h1>
-      //   <p>{studentProfile.firstName}</p>
-      //   <p>{studentProfile.lastName}</p> */}
-      // </div>
-      // <div>
-      //   <Table striped bordered hover>
-      //     <thead>
-      //       <tr>
-      //         <th>id</th>
-      //         <th>First Name</th>
-      //         <th>Last Name</th>
-      //         <th>Major</th>
-      //       </tr>
-      //     </thead>
-          <tbody>
-            <tr key={index}>
-                <td>{studentProfile.id}</td>
-                <td>{studentProfile.firstName}</td>
-                <td>{studentProfile.lastName}</td>
-                <td>{studentProfile.major}</td>
-            </tr>
-          </tbody>
-      //   </Table>
-      // </div>
+      <tr key={index}>
+          <td>{studentProfile.id}</td>
+          <td>{studentProfile.firstName}</td>
+          <td>{studentProfile.lastName}</td>
+          <td>{studentProfile.major}</td>
+      </tr>
     )
   });
 };
@@ -89,7 +65,8 @@ class NavBar extends React.Component {
 class StudentsList extends React.Component {
   render() {
     return (
-      <div className="StudentsList">
+      <div className="student-list">
+        <h2>Student List</h2>
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -99,51 +76,14 @@ class StudentsList extends React.Component {
               <th>Major</th>
             </tr>
           </thead>
-          {/* <tbody>
-            <tr key={index}>
-                <td>{studentProfile.id}</td>
-                <td>{studentProfile.firstName}</td>
-                <td>{studentProfile.lastName}</td>
-                <td>{studentProfile.major}</td>
-            </tr>
-          </tbody> */}
-          <Students />
+          <tbody>
+            <Students />
+          </tbody> 
         </Table>
       </div>
     );
   }
 }
-
-class StudentForm extends React.Component {
-  render() {
-    return (
-      <div>
-        <Form>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
-      </div>
-    );
-  }
-
-}
-
 
 
 
