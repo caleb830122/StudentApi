@@ -13,7 +13,7 @@ import com.caleb.demo.model.Student;
 import com.caleb.demo.service.StudentService;
 
 
-
+@CrossOrigin
 @RestController
 public class StudentController {
 
@@ -38,12 +38,12 @@ public class StudentController {
 	 * @return ResponseEntity for HTTP request response
 	 * 
 	 */
-	@GetMapping("/student")
+	@GetMapping("/student/getAllStudents")
 	public ResponseEntity<List<Student>> getAllStudent() {
 		return ResponseEntity.ok().body(studentService.getAllStudent());
 	}
 	
-	@GetMapping("/student/{id}")
+	@GetMapping("/student/getStudentByID/{id}")
 	public ResponseEntity<Student> getStudentById(@PathVariable int id) {
 		return ResponseEntity.ok().body(studentService.getStudent(id));
 	}
@@ -51,21 +51,21 @@ public class StudentController {
 	// Practice how to change the response status code
 	
 	// What component is doing the conversion from JSON to object within our code????
-	@PostMapping("/student")
+	@PostMapping("/student/addStudent")
 	public ResponseEntity<Student> addStudent(@RequestBody Student student) {
 		
 		// By changing the ResponseEntity.ok() to .created, 
 		return ResponseEntity.created(null).body(studentService.addStudent(student));	
 	}
 
-	@PutMapping("/student/{id}")
+	@PutMapping("/student/updateStudent/{id}")
 	public ResponseEntity<Student> updateStudent(@PathVariable int id, @RequestBody Student student) {
 		student.setId(id);
 		return ResponseEntity.ok().body(studentService.updateStudent(student));
 	}
 	
 	//Question mark ? wildcard object mark
-	@DeleteMapping("/student/{id}")
+	@DeleteMapping("/student/deleteStudent/{id}")
 	public HttpStatus deleteStudent(@PathVariable int id) {
 		studentService.deleteStudent(id);
 		return HttpStatus.OK;
