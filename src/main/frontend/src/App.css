@@ -43,6 +43,7 @@
 
 .student-list {
   margin: 2rem;
+  padding: 2rem;
   flex-wrap: wrap;
   max-width: 70rem;
   margin: 0 auto;

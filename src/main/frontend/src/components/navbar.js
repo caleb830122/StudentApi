@@ -9,7 +9,8 @@ import {
 } from "react-router-dom";
 
 import HomePanel from "./homePanel";
-
+import StudentList from "./studentList";
+import StudentForm from "./studentForm"
 class NavBar extends React.Component {
   render() {
     return (
@@ -24,7 +25,7 @@ class NavBar extends React.Component {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ms-auto">
                 <Nav.Link as={Link} to={"/search"}>Search</Nav.Link>
-                <Nav.Link as={Link} to={"/link"}>Link</Nav.Link>
+                <Nav.Link as={Link} to={"/newStudent"}>Add new student</Nav.Link>
                 <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                   <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">
@@ -46,8 +47,8 @@ class NavBar extends React.Component {
         <div>
           <Routes>
             <Route path="/" element={<HomePanel />} />
-            <Route path="/home" elements={<h1>Student</h1>} />
-            <Route path="/link" element={<h1>Search</h1>} />
+            <Route path="/search" element={<StudentList />} />
+            <Route path="/newStudent" element={<StudentForm />} />
             
           </Routes>
         </div>
