@@ -8,8 +8,8 @@ const App = () => {
   return (
     <div className="App">
       <NavBar />
-      <StudentList />
-      <StudentForm />
+      {/* <StudentList />
+      <StudentForm /> */}
     </div>
   );
 }

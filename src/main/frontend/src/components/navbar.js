@@ -4,8 +4,12 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
+
+import HomePanel from "./homePanel";
+
 class NavBar extends React.Component {
   render() {
     return (
@@ -41,8 +45,9 @@ class NavBar extends React.Component {
         </div>
         <div>
           <Routes>
+            <Route path="/" element={<HomePanel />} />
             <Route path="/home" elements={<h1>Student</h1>} />
-            <Route path="/search" element={<h1>Search</h1>} />
+            <Route path="/link" element={<h1>Search</h1>} />
             
           </Routes>
         </div>
