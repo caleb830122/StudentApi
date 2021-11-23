@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import {Table} from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
 
 
 const Students = () => {
@@ -29,6 +29,7 @@ const Students = () => {
             <td>{studentProfile.firstName}</td>
             <td>{studentProfile.lastName}</td>
             <td>{studentProfile.major}</td>
+            <td><EditButton dataFromParent={index}/></td>
         </tr>
       )
     });
@@ -51,6 +52,7 @@ const Students = () => {
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Major</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -61,6 +63,22 @@ const Students = () => {
       );
     }
   }
+
+class EditButton extends React.Component {
+    render() {
+        return (
+            <div>
+                <Button className="delete-btn" variant="danger" size="sm" onClick={console.log(`delete for index: ${this.props.dataFromParent}`)}>Delete</Button>
+                <Button className="update-btn" variant="success" size="sm">Update</Button>
+            </div>
+            
+        );
+    }
+}
+
+const handleDelete = () => {
+    
+}
 
 export default StudentList;
   
