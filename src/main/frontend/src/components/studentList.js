@@ -4,27 +4,7 @@ import { Table, Button } from 'react-bootstrap';
 import { Input } from 'semantic-ui-react'
 
 
-const Students = () => {
-
-    // Similar to create a state object
-    // userProfile is the state being used, and we have a method called setUserProfiles to manipulate it
-    const [studentProfiles, setStudentProfiles] = useState([]);
-    
-    // useState for searching
-    const [searchInput, setSearchInput] = useState('');
-
-    const fetchAllStudent = () => {
-      axios.get("http://localhost:8080/student/getAllStudents").then(res => {
-        console.log(res);
-        // set userProfile state object with response data
-        setStudentProfiles(res.data)
-      });
-    };
-  
-    useEffect(() => {
-      fetchAllStudent();
-    }, []);
-  
+const Students = ({studentProfiles}) => {  
     return studentProfiles.map((studentProfile, index) => {
       
       return (
@@ -41,44 +21,34 @@ const Students = () => {
   
   
   
-  class StudentList extends React.Component {
-    render() {
-      return (
+const StudentList = ({studentProfiles}) => {
+    return (
         <div className="student-list">
-          <div>
-            <h2>Student List</h2>
-          </div>
-          <div>
-            <Input className="studentList-search" icon="search" placeholder="Search..." onChange={(event) => searchItems(event.target.value)} />
-          </div>
-          <Table striped bordered hover>
+            <Table striped bordered hover>
             <thead>
-              <tr>
+                <tr>
                 <th>id</th>
                 <th>Name</th>
                 <th>Major</th>
-                <th></th>
-              </tr>
+                <th>Edit</th>
+                </tr>
             </thead>
             <tbody>
-              <Students />
+                <Students studentProfiles={studentProfiles}/>
             </tbody> 
-          </Table>
+            </Table>
         </div>
-      );
-    }
-  }
+    );
+}
 
-class EditButton extends React.Component {
-    render() {
-        return (
-            <div>
-                <Button className="delete-btn" variant="danger" size="sm" onClick={() => handleDelete(this.props.dataFromParent)}>Delete</Button>
-                <Button className="update-btn" variant="success" size="sm">Update</Button>
-            </div>
-            
-        );
-    }
+const EditButton = ( {dataFromParent} ) => { 
+    return (
+        <div>
+            <Button className="delete-btn" variant="danger" size="sm" onClick={() => handleDelete(dataFromParent)}>Delete</Button>
+            <Button className="update-btn" variant="success" size="sm">Update</Button>
+        </div>
+        
+    );  
 }
 
 const handleDelete = async (id) => {
@@ -95,10 +65,48 @@ const handleDelete = async (id) => {
     }
 }
 
+// const setSearchValue = () => {
+//     setSearchTerm("c");
 
-const searchItems = (searchValue) => {
+// }
 
+// Root componoent for this student search and display page
+const StudentInfoSection = () => {
+    const [studentProfiles, setStudentProfiles] = useState([]);
+    const fetchAllStudent = () => {
+        axios.get("http://localhost:8080/student/getAllStudents").then(res => {
+          console.log(res);
+          // set userProfile state object with response data
+          setStudentProfiles(res.data)
+        });
+    };
+
+    useEffect(() => {
+        fetchAllStudent();
+    }, []);
+    
+    const [searchTerm, setSearchTerm] = useState("");
+    return (
+        <div>
+            <div>
+                <h2>Student List</h2>
+            </div>
+            <div>
+                <Input className="studentList-search" icon="search" placeholder="Search..." onChange={(event) => setSearchTerm(event.target.value)} />
+            </div>
+            <StudentList studentProfiles={studentProfiles.filter((value) => {
+                if (searchTerm === "") {
+                    return value;
+                } else if (value.firstName.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    return value;
+                } else if (value.lastName.toLowerCase().includes(searchTerm)) {
+                    return value;
+                }
+            
+        console.log(value);
+    })}/>
+        </div>
+    );
 }
-
-export default StudentList;
+export default StudentInfoSection;
   
