@@ -29,7 +29,7 @@ const Students = () => {
             <td>{studentProfile.firstName}</td>
             <td>{studentProfile.lastName}</td>
             <td>{studentProfile.major}</td>
-            <td><EditButton dataFromParent={index}/></td>
+            <td><EditButton dataFromParent={studentProfile.id}/></td>
         </tr>
       )
     });
@@ -68,7 +68,7 @@ class EditButton extends React.Component {
     render() {
         return (
             <div>
-                <Button className="delete-btn" variant="danger" size="sm" onClick={console.log(`delete for index: ${this.props.dataFromParent}`)}>Delete</Button>
+                <Button className="delete-btn" variant="danger" size="sm" onClick={() => handleDelete(this.props.dataFromParent)}>Delete</Button>
                 <Button className="update-btn" variant="success" size="sm">Update</Button>
             </div>
             
@@ -76,8 +76,18 @@ class EditButton extends React.Component {
     }
 }
 
-const handleDelete = () => {
-    
+const handleDelete = async (id) => {
+    alert('Are you sure you want to delete this student?');
+    console.log(id);
+    try { 
+        const res = await axios.delete(`http://localhost:8080/student/deleteStudent/${id}`);
+        console.log(res.data);
+
+        //Temporary solution by refreshing the page
+        window.location.reload();
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 export default StudentList;

@@ -5,7 +5,6 @@ import {
   Routes,
   Route,
   Link,
-  Redirect
 } from "react-router-dom";
 
 import HomePanel from "./homePanel";
