@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
+import { Input } from 'semantic-ui-react'
 
 
 const Students = () => {
@@ -8,7 +9,10 @@ const Students = () => {
     // Similar to create a state object
     // userProfile is the state being used, and we have a method called setUserProfiles to manipulate it
     const [studentProfiles, setStudentProfiles] = useState([]);
-  
+    
+    // useState for searching
+    const [searchInput, setSearchInput] = useState('');
+
     const fetchAllStudent = () => {
       axios.get("http://localhost:8080/student/getAllStudents").then(res => {
         console.log(res);
@@ -26,8 +30,7 @@ const Students = () => {
       return (
         <tr key={index}>
             <td>{studentProfile.id}</td>
-            <td>{studentProfile.firstName}</td>
-            <td>{studentProfile.lastName}</td>
+            <td>{studentProfile.firstName} {studentProfile.lastName}</td>
             <td>{studentProfile.major}</td>
             <td><EditButton dataFromParent={studentProfile.id}/></td>
         </tr>
@@ -45,12 +48,14 @@ const Students = () => {
           <div>
             <h2>Student List</h2>
           </div>
+          <div>
+            <Input className="studentList-search" icon="search" placeholder="Search..." onChange={(event) => searchItems(event.target.value)} />
+          </div>
           <Table striped bordered hover>
             <thead>
               <tr>
                 <th>id</th>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Name</th>
                 <th>Major</th>
                 <th></th>
               </tr>
@@ -88,6 +93,11 @@ const handleDelete = async (id) => {
     } catch (err) {
         console.log(err);
     }
+}
+
+
+const searchItems = (searchValue) => {
+
 }
 
 export default StudentList;

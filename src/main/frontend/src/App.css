@@ -55,3 +55,7 @@
   max-width: 40rem;
   margin: 0 auto;
 }
+
+.studentList-search {
+  padding: 2rem;
+}
