@@ -47,7 +47,12 @@ class NavBar extends React.Component {
           <Routes>
             <Route path="/" element={<HomePanel />} />
             <Route path="/search" element={<StudentList />} />
-            <Route path="/newStudent" element={<StudentForm />} />
+            <Route path="/newStudent" element={
+              <div>
+                <p>Please type in the information of the new student you want to add</p>
+                <StudentForm />
+              </div>
+              } />
             
           </Routes>
         </div>

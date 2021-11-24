@@ -19,8 +19,12 @@
   background-color: #fff;
 }
 
+.popup-title {
+  padding-bottom: 2rem;
+}
+
 .popup-inner .close-btn {
   position: absolute;
-  top: 16px;
+  bottom: 16px;
   right: 16px;
 }

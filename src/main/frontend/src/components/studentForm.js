@@ -3,6 +3,8 @@ import { Form, Button} from 'react-bootstrap';
 import axios from 'axios';
 
 class StudentForm extends React.Component {
+    
+    // Traditional way of handling state
     constructor(props) {
         super(props)
     

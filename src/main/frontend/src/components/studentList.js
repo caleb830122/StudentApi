@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
 import { Input } from 'semantic-ui-react'
 import Popup from './popup'
+import StudentForm from './studentForm';
 
 const Students = ({studentProfiles}) => {  
     return studentProfiles.map((studentProfile, index) => {
@@ -12,7 +13,8 @@ const Students = ({studentProfiles}) => {
             <td>{studentProfile.id}</td>
             <td>{studentProfile.firstName} {studentProfile.lastName}</td>
             <td>{studentProfile.major}</td>
-            <td><EditButton dataFromParent={studentProfile.id}/></td>
+            <td><EditButton idFromParent={studentProfile.id} firstNameFromParent={studentProfile.firstName} 
+                            lastNameFromParent={studentProfile.lastName} majorFromParent={studentProfile.major}/></td>
         </tr>
       )
     });
@@ -41,11 +43,15 @@ const StudentList = ({studentProfiles}) => {
     );
 }
 
-const EditButton = ( {dataFromParent} ) => { 
+const EditButton = ( { idFromParent , firstNameFromParent, lastNameFromParent, majorFromParent} ) => { 
+    const [buttonPopup, setButtonPopup] = useState(false);
     return (
         <div>
-            <Button className="delete-btn" variant="danger" size="sm" onClick={() => handleDelete(dataFromParent)}>Delete</Button>
-            <Button className="update-btn" variant="success" size="sm">Update</Button>
+            <Button className="delete-btn" variant="danger" size="sm" onClick={() => handleDelete(idFromParent)}>Delete</Button>
+            <Button className="update-btn" variant="success" size="sm" onClick={() =>setButtonPopup(true)}>Update</Button>
+            <Popup trigger = {buttonPopup} setTrigger={setButtonPopup} firstName={firstNameFromParent} lastName={lastNameFromParent} major={majorFromParent}>
+                <StudentForm />
+            </Popup>
         </div>
         
     );  
