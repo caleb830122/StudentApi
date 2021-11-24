@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
 import { Input } from 'semantic-ui-react'
-
+import Popup from './popup'
 
 const Students = ({studentProfiles}) => {  
     return studentProfiles.map((studentProfile, index) => {
@@ -65,11 +65,6 @@ const handleDelete = async (id) => {
     }
 }
 
-// const setSearchValue = () => {
-//     setSearchTerm("c");
-
-// }
-
 // Root componoent for this student search and display page
 const StudentInfoSection = () => {
     const [studentProfiles, setStudentProfiles] = useState([]);
@@ -85,6 +80,7 @@ const StudentInfoSection = () => {
         fetchAllStudent();
     }, []);
     
+    // useState hook for searching
     const [searchTerm, setSearchTerm] = useState("");
     return (
         <div>
@@ -102,8 +98,6 @@ const StudentInfoSection = () => {
                 } else if (value.lastName.toLowerCase().includes(searchTerm)) {
                     return value;
                 }
-            
-        console.log(value);
     })}/>
         </div>
     );
