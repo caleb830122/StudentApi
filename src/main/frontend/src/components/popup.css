@@ -12,7 +12,10 @@
 }
 
 .popup-inner {
+  display: flex;
   position: relative;
+  flex-direction: column;
+  justify-content: flex-start;
   padding: 32px;
   width: 100%;
   max-width: 640px;
