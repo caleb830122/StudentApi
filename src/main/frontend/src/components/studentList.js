@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import { Table, Button } from 'react-bootstrap';
+import { Table, Button, Image } from 'react-bootstrap';
 import { Input } from 'semantic-ui-react'
 import Popup from './popup'
-import StudentForm from './studentForm';
+import editButtonImg from '../images/edit.png'
+
 
 // Student List  
 const StudentList = ({studentProfiles}) => {
@@ -46,28 +47,12 @@ const EditButton = ( { idFromParent , firstNameFromParent, lastNameFromParent, m
     const [buttonPopup, setButtonPopup] = useState(false);
     return (
         <div>
-            <Button className="delete-btn" variant="danger" size="sm" onClick={() => handleDelete(idFromParent)}>Delete</Button>
-            <Button className="update-btn" variant="success" size="sm" onClick={() =>setButtonPopup(true)}>Update</Button>
-            <Popup trigger = {buttonPopup} setTrigger={setButtonPopup} firstName={firstNameFromParent} lastName={lastNameFromParent} major={majorFromParent}>
-                <StudentForm />
+            <Button className="update-btn" variant="light" size="sm" onClick={() =>setButtonPopup(true)}><Image src={editButtonImg} width="20px" height="20px"/></Button>
+            <Popup trigger = {buttonPopup} setTrigger={setButtonPopup} id={idFromParent} firstName={firstNameFromParent} lastName={lastNameFromParent} major={majorFromParent}>
             </Popup>
         </div>
         
     );  
-}
-
-const handleDelete = async (id) => {
-    alert('Are you sure you want to delete this student?');
-    console.log(id);
-    try { 
-        const res = await axios.delete(`http://localhost:8080/student/deleteStudent/${id}`);
-        console.log(res.data);
-
-        //Temporary solution by refreshing the page
-        window.location.reload();
-    } catch (err) {
-        console.log(err);
-    }
 }
 
 // Root component for this student search and display page
