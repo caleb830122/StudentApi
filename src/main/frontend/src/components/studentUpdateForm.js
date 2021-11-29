@@ -9,9 +9,9 @@ class StudentUpdateForm extends React.Component {
         super(props)
     
         this.state = {
-            lastName: '',
-            firstName: '',
-            major: ''
+            lastName: props.lastName,
+            firstName: props.firstName,
+            major: props.major
         }
     }
     handleFirstNameChange = (event) => {
@@ -54,7 +54,7 @@ class StudentUpdateForm extends React.Component {
                         <Form.Check type="checkbox" label="Check me out" />
                     </Form.Group> */}
                     <Button variant="primary" type="submit">
-                        Add
+                        Update
                     </Button>
 
 
@@ -68,22 +68,12 @@ class StudentUpdateForm extends React.Component {
         event.preventDefault();
         console.log(JSON.stringify(this.state));
         const formBody = JSON.parse(JSON.stringify(this.state));
-        // axios.post("http://localhost:8080/student/addStudent", formBody).then(res => {
-        //   console.log(res);  
-        // });
-        postAddStudent(formBody);
-        // window.location.reload(true);
+        axios.post("http://localhost:8080/student/addStudent", formBody).then(res => {
+          console.log(res);  
+        });
+        window.location.reload(true);
     }
     
-    postAddStudent = async (formBody) => {
-        try {
-            axios.post("http://localhost:8080/student/addStudent", formBody).then(res => {
-                console.log(res);  
-            });
-        } catch (err) {
-            console.error(err);
-        }
-    }
 }
 
 

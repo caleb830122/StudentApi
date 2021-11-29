@@ -26,6 +26,10 @@
   padding-bottom: 2rem;
 }
 
+.popup-inner .details {
+  padding: 2rem;
+}
+
 .popup-inner .close-btn {
   position: absolute;
   bottom: 16px;
@@ -36,4 +40,11 @@
   position: absolute;
   bottom: 16px;
   left: 16px;
+}
+
+.popup-inner .update-btn {
+  position: absolute;
+  bottom: 16px;
+  left: auto;
+  right: auto;
 }
