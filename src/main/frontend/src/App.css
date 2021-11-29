@@ -41,13 +41,13 @@
   background: purple;
 }
 
-.student-list {
+/* .student-list {
   margin: 2rem;
   padding: 2rem;
   flex-wrap: wrap;
   max-width: 70rem;
   margin: 0 auto;
-}
+} */
 
 .student-form {
   margin: 2rem;
@@ -56,6 +56,18 @@
   margin: 0 auto;
 }
 
-.studentList-search {
+.studentList-search-box {
+  margin: 2rem;
   padding: 2rem;
+  display: flex;
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+.student-search-page {
+  margin: 2rem;
+  padding: 2rem;
+  flex-wrap: wrap;
+  max-width: 70rem;
+  margin: 0 auto;
 }

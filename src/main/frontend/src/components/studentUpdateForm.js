@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Button} from 'react-bootstrap';
 import axios from 'axios';
 
-class StudentForm extends React.Component {
+class StudentUpdateForm extends React.Component {
     
     // Traditional way of handling state
     constructor(props) {
@@ -42,7 +42,7 @@ class StudentForm extends React.Component {
 
                     <Form.Group className="mb-3">
                         <Form.Label>Last Name</Form.Label>
-                        <Form.Control placeholder="Last Name" required value={this.state.lastName} onChange={this.handleLastNameChange}/>
+                        <Form.Control placeholder="Last Name" required value={this.state.lastName} pattern = "[A-Za-z]" onChange={this.handleLastNameChange}/>
                     </Form.Group>
 
                     <Form.Group className="mb-3">
@@ -68,13 +68,23 @@ class StudentForm extends React.Component {
         event.preventDefault();
         console.log(JSON.stringify(this.state));
         const formBody = JSON.parse(JSON.stringify(this.state));
-        axios.post("http://localhost:8080/student/addStudent", formBody).then(res => {
-          console.log(res);  
-        });
-        window.location.reload(true);
+        // axios.post("http://localhost:8080/student/addStudent", formBody).then(res => {
+        //   console.log(res);  
+        // });
+        postAddStudent(formBody);
+        // window.location.reload(true);
     }
     
+    postAddStudent = async (formBody) => {
+        try {
+            axios.post("http://localhost:8080/student/addStudent", formBody).then(res => {
+                console.log(res);  
+            });
+        } catch (err) {
+            console.error(err);
+        }
+    }
 }
 
 
-export default StudentForm;
+export default StudentUpdateForm;

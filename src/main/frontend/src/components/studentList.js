@@ -5,24 +5,7 @@ import { Input } from 'semantic-ui-react'
 import Popup from './popup'
 import StudentForm from './studentForm';
 
-const Students = ({studentProfiles}) => {  
-    return studentProfiles.map((studentProfile, index) => {
-      
-      return (
-        <tr key={index}>
-            <td>{studentProfile.id}</td>
-            <td>{studentProfile.firstName} {studentProfile.lastName}</td>
-            <td>{studentProfile.major}</td>
-            <td><EditButton idFromParent={studentProfile.id} firstNameFromParent={studentProfile.firstName} 
-                            lastNameFromParent={studentProfile.lastName} majorFromParent={studentProfile.major}/></td>
-        </tr>
-      )
-    });
-  };
-  
-  
-  
-  
+// Student List  
 const StudentList = ({studentProfiles}) => {
     return (
         <div className="student-list">
@@ -43,6 +26,22 @@ const StudentList = ({studentProfiles}) => {
     );
 }
 
+// Each row of the student profile
+const Students = ({studentProfiles}) => {  
+    return studentProfiles.map((studentProfile, index) => {
+      
+      return (
+        <tr key={index}>
+            <td>{studentProfile.id}</td>
+            <td>{studentProfile.firstName} {studentProfile.lastName}</td>
+            <td>{studentProfile.major}</td>
+            <td><EditButton idFromParent={studentProfile.id} firstNameFromParent={studentProfile.firstName} 
+                            lastNameFromParent={studentProfile.lastName} majorFromParent={studentProfile.major}/></td>
+        </tr>
+      )
+    });
+  };
+  
 const EditButton = ( { idFromParent , firstNameFromParent, lastNameFromParent, majorFromParent} ) => { 
     const [buttonPopup, setButtonPopup] = useState(false);
     return (
@@ -71,7 +70,7 @@ const handleDelete = async (id) => {
     }
 }
 
-// Root componoent for this student search and display page
+// Root component for this student search and display page
 const StudentInfoSection = () => {
     const [studentProfiles, setStudentProfiles] = useState([]);
     const fetchAllStudent = () => {
@@ -89,12 +88,12 @@ const StudentInfoSection = () => {
     // useState hook for searching
     const [searchTerm, setSearchTerm] = useState("");
     return (
-        <div>
+        <div className="student-search-page">
             <div>
                 <h2>Student List</h2>
             </div>
-            <div>
-                <Input className="studentList-search" icon="search" placeholder="Search..." onChange={(event) => setSearchTerm(event.target.value)} />
+            <div className="studentList-search-box">
+                <Input icon="search" placeholder="Search student name..." onChange={(event) => setSearchTerm(event.target.value)} />
             </div>
             <StudentList studentProfiles={studentProfiles.filter((value) => {
                 if (searchTerm === "") {

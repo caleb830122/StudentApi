@@ -25,17 +25,17 @@ class NavBar extends React.Component {
               <Nav className="ms-auto">
                 <Nav.Link as={Link} to={"/search"}>Search</Nav.Link>
                 <Nav.Link as={Link} to={"/newStudent"}>Add new student</Nav.Link>
-                <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                <NavDropdown title="More" id="basic-nav-dropdown">
+                  <NavDropdown.Item href="#action/3.1">Settings</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">
-                    Another action
+                    About
                   </NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.3">
-                    Something
+                    Contact Us
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="#action/3.4">
-                    Separated link
+                    Report
                   </NavDropdown.Item>
                 </NavDropdown>
               </Nav>
