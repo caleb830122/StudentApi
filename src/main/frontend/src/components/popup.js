@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Image } from 'react-bootstrap'
 import './popup.css'
-import StudentForm from './studentForm'
 import profileIcon from '../images/profile.png'
 import axios from 'axios'
 import UpdateStudentPopup from './UpdateStudentPopup'
@@ -45,7 +44,7 @@ const UpdateStudentButton = ( { idFromParent , firstNameFromParent, lastNameFrom
     return (
         <div>
             <Button className="update-btn" variant="info" onClick={() =>setButtonPopup(true)}>Update</Button>
-            <UpdateStudentPopup trigger = {buttonPopup} setTrigger={setButtonPopup} id={idFromParent} firstName={firstNameFromParent} lastName={lastNameFromParent} major={majorFromParent} lastName={lastNameFromParent} major={majorFromParent}>
+            <UpdateStudentPopup trigger = {buttonPopup} setTrigger={setButtonPopup} id={idFromParent} firstName={firstNameFromParent} lastName={lastNameFromParent} major={majorFromParent}>
             </UpdateStudentPopup>
         </div>
         

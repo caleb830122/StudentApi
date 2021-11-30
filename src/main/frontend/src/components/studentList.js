@@ -15,7 +15,6 @@ const StudentList = () => {
         axios.get("http://localhost:8080/student/getAllStudents").then(res => {
           console.log(res);
           // set userProfile state object with response data
-          let student = res.data;
           setStudentProfiles(res.data.map(d => {
               return {
                   select: false,

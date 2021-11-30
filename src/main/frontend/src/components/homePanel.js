@@ -1,29 +1,25 @@
-import React, { useState }from "react";
-import UpdateStudentPopup from "./UpdateStudentPopup";
-import {Button} from 'react-bootstrap';
+import React from "react";
+import {Image} from 'react-bootstrap';
+import studentsImage from '../images/students.jpg'
 const HomePanel = () => {   
-    // const [buttonPopup, setButtonPopup] = useState(false);
+    // Play around with inline CSS styling
+    const headingStyleObj = {
+        fontSize: 26,
+        color: "#4a54f1",
+        textAlign: "center",
+        paddingTop: "10px",
+    }
+
+    const imageStyleObj = {
+        width: "50%",
+    }
+
     return (
         <div>
-            <h1>Home</h1>
-            
-            <UpdateStudentButton />
-            {/* <Popup trigger = {buttonPopup} setTrigger={setButtonPopup}></Popup> */}
+            <h2 style={headingStyleObj}>Welcome to Student Information System Portal</h2>
+            <Image src={studentsImage} style={imageStyleObj}/>
         </div>
     );
-}
-
-const UpdateStudentButton = ( { idFromParent , firstNameFromParent, lastNameFromParent, majorFromParent} ) => { 
-    const [buttonPopup, setButtonPopup] = useState(false);
-    return (
-        <div>
-            <h1>hi</h1>
-            <Button className="update-btn" size="sm" onClick={() =>setButtonPopup(true)}>Update</Button>
-            <UpdateStudentPopup trigger = {buttonPopup} setTrigger={setButtonPopup} id={idFromParent} firstName={firstNameFromParent} lastName={lastNameFromParent} major={majorFromParent}>
-            </UpdateStudentPopup>
-        </div>
-        
-    );  
 }
 
 

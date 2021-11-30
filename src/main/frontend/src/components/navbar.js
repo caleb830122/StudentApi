@@ -18,7 +18,7 @@ class NavBar extends React.Component {
         <Navbar bg="myPurple" expand="lg" variant="dark" fixed="true">
           <Container>
             <Navbar.Brand as={Link} to={"/"}>
-              Student Information System Portal
+              Student Information System Portal (SISP)
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">

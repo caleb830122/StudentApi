@@ -1,9 +1,7 @@
 import React from 'react'
-import { Button, Image } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 import './popup.css'
 import StudentUpdateForm from './studentUpdateForm'
-import profileIcon from '../images/profile.png'
-import axios from 'axios'
 
 function UpdateStudentPopup(props) {
     
@@ -15,20 +13,6 @@ function UpdateStudentPopup(props) {
             </div>
         </div>
     ) : "";
-}
-
-const handleDelete = async (id) => {
-    alert('Are you sure you want to delete this student?');
-    console.log(id);
-    try { 
-        const res = await axios.delete(`http://localhost:8080/student/deleteStudent/${id}`);
-        console.log(res.data);
-
-        //Temporary solution by refreshing the page
-        window.location.reload();
-    } catch (err) {
-        console.log(err);
-    }
 }
 
 
