@@ -26,17 +26,21 @@ function Popup(props) {
 }
 
 const handleDelete = async (id) => {
-    alert('Are you sure you want to delete this student?');
-    console.log(id);
-    try { 
-        const res = await axios.delete(`http://localhost:8080/student/deleteStudent/${id}`);
-        console.log(res.data);
-
-        //Temporary solution by refreshing the page
-        window.location.reload();
-    } catch (err) {
-        console.log(err);
+    var answer = window.confirm('Are you sure you want to delete this student?');
+    if (answer) {
+        try { 
+            const res = await axios.delete(`http://localhost:8080/student/deleteStudent/${id}`);
+            console.log(res.data);
+    
+            //Temporary solution by refreshing the page
+            window.location.reload();
+        } catch (err) {
+            console.log(err);
+        }
+    } else {
+        
     }
+    
 }
 
 const UpdateStudentButton = ( { idFromParent , firstNameFromParent, lastNameFromParent, majorFromParent} ) => { 

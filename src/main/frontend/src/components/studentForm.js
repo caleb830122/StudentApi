@@ -63,15 +63,24 @@ class StudentForm extends React.Component {
         );
     }
     handleAddStudentSubmitted = (event) => {
-        // for testin purpose  
-        alert(`Check your information ${this.state.firstName} ${this.state.lastName} ${this.state.major}`)
-        event.preventDefault();
-        console.log(JSON.stringify(this.state));
-        const formBody = JSON.parse(JSON.stringify(this.state));
-        axios.post("http://localhost:8080/student/addStudent", formBody).then(res => {
-          console.log(res);  
-        });
-        window.location.reload(true);
+        // Check user response
+        var answer = window.confirm(`Check your information \n\nName: ${this.state.firstName} ${this.state.lastName}\nMajor: ${this.state.major} \n\nWant to add it?`);
+        // alert(`Check your information ${this.state.firstName} ${this.state.lastName} ${this.state.major}`)
+        if (answer) {
+            event.preventDefault();
+            console.log(JSON.stringify(this.state));
+            const formBody = JSON.parse(JSON.stringify(this.state));
+            axios.post("http://localhost:8080/student/addStudent", formBody).then(res => {
+              console.log(res); 
+              alert("Successful"); 
+            }).catch(err => {alert(err);});
+            setTimeout(() => { 
+                window.location.reload(true);
+            }, 1000);
+        } else {
+            event.preventDefault();
+        }
+        
     }
     
 }

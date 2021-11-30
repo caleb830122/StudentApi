@@ -67,15 +67,21 @@ class StudentUpdateForm extends React.Component {
         );
     }
     handleUpdateStudentSubmitted = (event) => {
-        // for testin purpose  
-        alert(`The information below will be updated for student ID ${this.state2.id} : ${this.state.firstName} ${this.state.lastName} ${this.state.major}`)
-        event.preventDefault();
-        console.log(JSON.stringify(this.state));
-        const formBody = JSON.parse(JSON.stringify(this.state));
-        axios.put(`http://localhost:8080/student/updateStudent/${this.state2.id}`, formBody).then(res => {
-          console.log(res);  
-        });
-        window.location.reload(true);
+        var answer = window.confirm(`The information below will be updated for student \nID: ${this.state2.id}\nFirst Name: ${this.state.firstName}\nLast Name: ${this.state.lastName} \nMajor: ${this.state.major} \n\nProceed?`);
+        if (answer) {
+            event.preventDefault();
+            console.log(JSON.stringify(this.state));
+            const formBody = JSON.parse(JSON.stringify(this.state));
+            axios.put(`http://localhost:8080/student/updateStudent/${this.state2.id}`, formBody).then(res => {
+            console.log(res);  
+            }).catch(err => {console.log(err);});
+
+            // Make sure the http request has enough time to be sent
+            setTimeout(() => { window.location.reload(true); }, 1000);
+        } else {
+
+        }
+        
     }
     
 }

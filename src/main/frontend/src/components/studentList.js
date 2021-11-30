@@ -34,22 +34,25 @@ const StudentList = () => {
     // useState hook for searching
     const [searchTerm, setSearchTerm] = useState("");
     
-    const deleteStudentByIds = () => {
+    const deleteStudentByIds = () => { 
         let arrayids = [];
         studentProfiles.forEach(d => {
           if (d.select) {
             arrayids.push(d.id);
           }
         });
-        // console.log(arrayids);
-        // console.log(`http://localhost:8080/student/${arrayids}`)
-        axios
-          .delete(`http://localhost:8080/student/deleteStudents/${arrayids}`)
-          .then(data => {
-            console.log(data);
-            fetchAllStudent();
-          })
-          .catch(err => alert(err));
+        var answer = window.confirm(`Are you sure you want to delete student id: ${arrayids}?`)
+        if (answer) {
+            axios
+            .delete(`http://localhost:8080/student/deleteStudents/${arrayids}`)
+            .then(data => {
+              console.log(data);
+              fetchAllStudent();
+            })
+            .catch(err => alert(err));
+        } else {
+
+        } 
       };
 
 
