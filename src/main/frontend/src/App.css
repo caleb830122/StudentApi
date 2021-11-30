@@ -71,3 +71,9 @@
   max-width: 70rem;
   margin: 0 auto;
 }
+
+.student-search-page .studentList-search-checkbox {
+  display: flex;
+  margin: 0.2rem;
+  padding: 0.2rem;
+}

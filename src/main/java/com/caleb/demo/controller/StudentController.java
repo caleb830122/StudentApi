@@ -70,4 +70,16 @@ public class StudentController {
 		studentService.deleteStudent(id);
 		return HttpStatus.OK;
 	}
+	
+	@DeleteMapping("/student/deleteStudents/{ids}")
+	public HttpStatus deleteStudents(@PathVariable("ids") List<String> ids) {
+		ids.forEach(d -> {
+			if(studentService.existByid(Integer.parseInt(d))) {
+				studentService.deleteStudent(Integer.parseInt(d));
+			}
+			
+		});
+		
+		return HttpStatus.OK;
+	}
 }

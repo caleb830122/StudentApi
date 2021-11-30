@@ -1,6 +1,6 @@
 import React, { useState }from "react";
 import UpdateStudentPopup from "./UpdateStudentPopup";
-import {Button, Image} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 const HomePanel = () => {   
     // const [buttonPopup, setButtonPopup] = useState(false);
     return (

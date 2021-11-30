@@ -90,4 +90,13 @@ public class StudentService {
 	public StudentRepo getRepo() {
 		return this.repo;
 	}
+
+	/**
+	 * Check if an id is exist in database
+	 * @param parseInt id
+	 * @return boolean true if the student id exist in the database
+	 */
+	public boolean existByid(int id) {
+		return repo.existsById(id);
+	}
 }
