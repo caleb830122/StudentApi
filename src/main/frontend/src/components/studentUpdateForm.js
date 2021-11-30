@@ -13,6 +13,10 @@ class StudentUpdateForm extends React.Component {
             firstName: props.firstName,
             major: props.major
         }
+
+        this.state2 = {
+            id: props.id
+        }
     }
     handleFirstNameChange = (event) => {
         if(event.target.value.match("^[a-zA-Z ]*$") != null){
@@ -33,8 +37,8 @@ class StudentUpdateForm extends React.Component {
     render() {
         return (
             <div className="student-form">
-                <Form onSubmit={this.handleAddStudentSubmitted}>
-                    <Form.Group className="mb-3" id="firstName">
+                <Form onSubmit={this.handleUpdateStudentSubmitted}>
+                    <Form.Group className="mb-3">
                         <Form.Label>First Name (English Letter only)</Form.Label>
                         <Form.Control placeholder="First Name" required type="name" value={this.state.firstName} 
                         onChange={this.handleFirstNameChange}/>
@@ -42,7 +46,7 @@ class StudentUpdateForm extends React.Component {
 
                     <Form.Group className="mb-3">
                         <Form.Label>Last Name</Form.Label>
-                        <Form.Control placeholder="Last Name" required value={this.state.lastName} pattern = "[A-Za-z]" onChange={this.handleLastNameChange}/>
+                        <Form.Control placeholder="Last Name" required value={this.state.lastName} onChange={this.handleLastNameChange}/>
                     </Form.Group>
 
                     <Form.Group className="mb-3">
@@ -62,13 +66,13 @@ class StudentUpdateForm extends React.Component {
             </div>
         );
     }
-    handleAddStudentSubmitted = (event) => {
+    handleUpdateStudentSubmitted = (event) => {
         // for testin purpose  
-        alert(`Check your information ${this.state.firstName} ${this.state.lastName} ${this.state.major}`)
+        alert(`The information below will be updated for student ID ${this.state2.id} : ${this.state.firstName} ${this.state.lastName} ${this.state.major}`)
         event.preventDefault();
         console.log(JSON.stringify(this.state));
         const formBody = JSON.parse(JSON.stringify(this.state));
-        axios.post("http://localhost:8080/student/addStudent", formBody).then(res => {
+        axios.put(`http://localhost:8080/student/updateStudent/${this.state2.id}`, formBody).then(res => {
           console.log(res);  
         });
         window.location.reload(true);
