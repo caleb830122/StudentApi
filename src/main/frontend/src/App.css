@@ -38,9 +38,13 @@
 }
 
 .bg-myPurple {
-  background: purple;
+  background: rgb(66, 80, 121);
 }
 
+.add-student-heading {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
 /* .student-list {
   margin: 2rem;
   padding: 2rem;

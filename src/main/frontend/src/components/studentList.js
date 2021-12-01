@@ -158,34 +158,5 @@ const EditButton = ( { idFromParent , firstNameFromParent, lastNameFromParent, m
     );  
 }
 
-// Root component for this student search and display page
-// const StudentInfoSection = () => {
-    // const [studentProfiles, setStudentProfiles] = useState([]);
-    // const fetchAllStudent = () => {
-    //     axios.get("http://localhost:8080/student/getAllStudents").then(res => {
-    //       console.log(res);
-    //       // set userProfile state object with response data
-    //       setStudentProfiles(res.data)
-    //     });
-    // };
-
-    // useEffect(() => {
-    //     fetchAllStudent();
-    // }, []);
-    
-    // useState hook for searching
-    // const [searchTerm, setSearchTerm] = useState("");    
-    // return (
-    //     <div className="student-search-page">
-    //         <div>
-    //             <h2>Student List</h2>
-    //         </div>
-    //         <div className="studentList-search-box">
-    //             <Input icon="search" placeholder="Search student name..." onChange={(event) => setSearchTerm(event.target.value)} />
-    //         </div>
-    //         <StudentList />
-    //     </div>
-    // );
-// }
 export default StudentList;
   

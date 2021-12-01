@@ -11,6 +11,7 @@ import HomePanel from "./homePanel";
 import StudentList from "./studentList";
 import StudentForm from "./studentForm"
 class NavBar extends React.Component {
+  
   render() {
     return (
       <Router>
@@ -49,7 +50,7 @@ class NavBar extends React.Component {
             <Route path="/search" element={<StudentList />} />
             <Route path="/newStudent" element={
               <div>
-                <p>Please type in the information of the new student you want to add</p>
+                <h3 className="add-student-heading">Please type in the information of the new student you want to add</h3>
                 <StudentForm />
               </div>
               } />

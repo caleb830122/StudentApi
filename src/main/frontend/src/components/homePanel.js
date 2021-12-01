@@ -13,6 +13,7 @@ const HomePanel = () => {
     const imageStyleObj = {
         width: "50%",
     }
+    
 
     return (
         <div>

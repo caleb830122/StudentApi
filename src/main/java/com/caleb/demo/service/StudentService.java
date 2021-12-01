@@ -99,4 +99,8 @@ public class StudentService {
 	public boolean existByid(int id) {
 		return repo.existsById(id);
 	}
+	
+	public Integer getStudentCount() {
+		return (int) repo.count();
+	}
 }

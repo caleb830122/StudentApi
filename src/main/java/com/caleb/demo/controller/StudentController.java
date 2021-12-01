@@ -82,4 +82,9 @@ public class StudentController {
 		
 		return HttpStatus.OK;
 	}
+	
+	@GetMapping("/student/getStudentCount")
+	public ResponseEntity<?> getStudentCount() {
+		return ResponseEntity.ok().body(studentService.getStudentCount());
+	}
 }

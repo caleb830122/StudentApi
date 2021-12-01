@@ -39,7 +39,7 @@ class StudentUpdateForm extends React.Component {
             <div className="student-form">
                 <Form onSubmit={this.handleUpdateStudentSubmitted}>
                     <Form.Group className="mb-3">
-                        <Form.Label>First Name (English Letter only)</Form.Label>
+                        <Form.Label>First Name</Form.Label>
                         <Form.Control placeholder="First Name" required type="name" value={this.state.firstName} 
                         onChange={this.handleFirstNameChange}/>
                     </Form.Group>
@@ -54,9 +54,6 @@ class StudentUpdateForm extends React.Component {
                         <Form.Control placeholder="Major" required value={this.state.major} onChange={this.handleMajorChange}/>
                     </Form.Group>
 
-                    {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Check me out" />
-                    </Form.Group> */}
                     <Button variant="primary" type="submit">
                         Update
                     </Button>

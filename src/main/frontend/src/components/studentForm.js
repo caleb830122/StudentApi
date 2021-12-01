@@ -35,7 +35,7 @@ class StudentForm extends React.Component {
             <div className="student-form">
                 <Form onSubmit={this.handleAddStudentSubmitted}>
                     <Form.Group className="mb-3" id="firstName">
-                        <Form.Label>First Name (English Letter only)</Form.Label>
+                        <Form.Label>First Name</Form.Label>
                         <Form.Control placeholder="First Name" required type="name" value={this.state.firstName} 
                         onChange={this.handleFirstNameChange}/>
                     </Form.Group>
@@ -50,9 +50,6 @@ class StudentForm extends React.Component {
                         <Form.Control placeholder="Major" required value={this.state.major} onChange={this.handleMajorChange}/>
                     </Form.Group>
 
-                    {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Check me out" />
-                    </Form.Group> */}
                     <Button variant="primary" type="submit">
                         Add
                     </Button>
@@ -75,7 +72,7 @@ class StudentForm extends React.Component {
               alert("Successful"); 
             }).catch(err => {alert(err);});
             setTimeout(() => { 
-                window.location.reload(true);
+                window.location.replace("/search");
             }, 1000);
         } else {
             event.preventDefault();
