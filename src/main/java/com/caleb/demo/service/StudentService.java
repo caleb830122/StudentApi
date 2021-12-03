@@ -11,7 +11,10 @@ import com.caleb.demo.dao.StudentRepo;
 import com.caleb.demo.exception.ResourceNotFoundException;
 import com.caleb.demo.model.Student;
 
+import lombok.AllArgsConstructor;
+
 // Scan this class as a service
+@AllArgsConstructor
 @Service
 @Transactional
 public class StudentService {
@@ -19,6 +22,10 @@ public class StudentService {
 	@Autowired
 	private StudentRepo repo;
 	
+	public StudentService(StudentRepo studentRepo) {
+		repo = studentRepo;
+	}
+
 	/**
 	 * Add a new student into database
 	 * CREATE
