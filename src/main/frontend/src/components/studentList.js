@@ -64,12 +64,7 @@ const StudentList = () => {
             </div>
             <div className="studentList-search-box">
                 <Input icon="search" placeholder="Search student name..." onChange={(event) => setSearchTerm(event.target.value)} />
-                <button
-                    className="btn btn-danger btn-sm m-2"
-                    onClick={() => {
-                    deleteStudentByIds();
-                    }}
-                >Delete selected</button>
+                
             </div>
         <div className="student-list">
             <Table striped bordered hover>
@@ -108,6 +103,12 @@ const StudentList = () => {
                 />
             </tbody> 
             </Table>
+            <button
+                    className="btn btn-danger btn-sm m-2"
+                    onClick={() => {
+                    deleteStudentByIds();
+                    }}
+                >Delete selected</button>
         </div>
         </div>
     );
