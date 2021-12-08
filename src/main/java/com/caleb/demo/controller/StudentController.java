@@ -26,13 +26,6 @@ public class StudentController {
 		return "home.jsp";	
 	}
 	
-//	@RequestMapping("/addStudent")
-//	public String addStudent(Student student) {
-//		repo.save(student);
-//		return "home.jsp";
-//	}
-	
-	
 	/**
 	 * Mapping for request to get all students from the database
 	 * @return ResponseEntity for HTTP request response
