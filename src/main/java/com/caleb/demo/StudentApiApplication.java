@@ -36,7 +36,7 @@ public class StudentApiApplication {
 		
 		authorities.add(createAuthority("USER", "User role"));
 		authorities.add(createAuthority("ADMIN", "Admin role"));
-		User user=new User();
+		User user = new User();
 		
 		user.setUserName("caleb0122");
 		user.setFirstName("Caleb");
