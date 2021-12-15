@@ -73,7 +73,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 //		http.formLogin();
 		
 		// h2-console
-		http.csrf().disable().headers().frameOptions().disable();
+//		http.csrf().disable().headers().frameOptions().disable();
+		http.csrf().disable().cors().and().headers().frameOptions().disable();
+	
+		
 		
 		// Basic Auth
 //		http.httpBasic();
