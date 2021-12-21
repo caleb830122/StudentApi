@@ -13,8 +13,10 @@ import StudentForm from "./studentForm"
 class NavBar extends React.Component {
 
   render() {
-    return (
-      <Router>
+
+    if (localStorage.getItem("user") == null) {
+      return (
+     
         <div>
         <Navbar bg="myPurple" expand="lg" variant="dark" fixed="true">
           <Container>
@@ -22,6 +24,22 @@ class NavBar extends React.Component {
               Student Information System Portal (SISP)
             </Navbar.Brand>
             <Nav.Link as={Link} to={"/login"}>Login</Nav.Link>
+            
+          </Container>
+        </Navbar>
+        </div>
+    );
+
+    } else {
+    return (
+     
+        <div>
+        <Navbar bg="myPurple" expand="lg" variant="dark" fixed="true">
+          <Container>
+            <Navbar.Brand as={Link} to={"/"}>
+              Student Information System Portal (SISP)
+            </Navbar.Brand>
+            <Nav.Link as={Link} to={"/logout"}>Logout</Nav.Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ms-auto">
@@ -45,21 +63,8 @@ class NavBar extends React.Component {
           </Container>
         </Navbar>
         </div>
-        <div>
-          <Routes>
-            <Route path="/" element={<HomePanel />} />
-            <Route path="/search" element={<StudentList />} />
-            <Route path="/newStudent" element={
-              <div>
-                <h3 className="add-student-heading">Please type in the information of the new student you want to add</h3>
-                <StudentForm />
-              </div>
-              } />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-        </div>
-      </Router>
     );
+    }
   }
 }
 

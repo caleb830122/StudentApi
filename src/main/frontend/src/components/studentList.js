@@ -5,14 +5,16 @@ import { Input } from 'semantic-ui-react'
 import Popup from './popup'
 import editButtonImg from '../images/edit.png'
 
-
+let authToken = JSON.parse(localStorage.getItem("user")).accessToken;
 // Student List  
 const StudentList = () => {
     // const [stateStudent, setStudentState] = useState([]);
 
     const [studentProfiles, setStudentProfiles] = useState([]);
     const fetchAllStudent = () => {
-        axios.get("http://localhost:8080/student/getAllStudents").then(res => {
+        axios.get("http://localhost:8080/student/getAllStudents",
+            { headers: {"Authorization" : `Bearer ${authToken}`} }
+        ).then(res => {
           console.log(res);
           // set userProfile state object with response data
           setStudentProfiles(res.data.map(d => {
@@ -44,7 +46,8 @@ const StudentList = () => {
         var answer = window.confirm(`Are you sure you want to delete student id: ${arrayids}?`)
         if (answer) {
             axios
-            .delete(`http://localhost:8080/student/deleteStudents/${arrayids}`)
+            .delete(`http://localhost:8080/student/deleteStudents/${arrayids}`,
+                    { headers: {"Authorization" : `Bearer ${authToken}`} })
             .then(data => {
               console.log(data);
               fetchAllStudent();
@@ -103,7 +106,7 @@ const StudentList = () => {
                 />
             </tbody> 
             </Table>
-            <button
+            <button 
                     className="btn btn-danger btn-sm m-2"
                     onClick={() => {
                     deleteStudentByIds();
@@ -158,6 +161,16 @@ const EditButton = ( { idFromParent , firstNameFromParent, lastNameFromParent, m
         
     );  
 }
+
+
+// For Axio http request call with bearer token
+const config = {
+    headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).accessToken}` }
+};
+
+const bodyParameters = {
+   key: "value"
+};
 
 export default StudentList;
   

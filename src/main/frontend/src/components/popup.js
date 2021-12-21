@@ -5,6 +5,8 @@ import profileIcon from '../images/profile.png'
 import axios from 'axios'
 import UpdateStudentPopup from './UpdateStudentPopup'
 
+let authToken = JSON.parse(localStorage.getItem("user")).accessToken;
+
 function Popup(props) {
     return (props.trigger) ? (
         <div className="popup">
@@ -29,7 +31,7 @@ const handleDelete = async (id) => {
     var answer = window.confirm('Are you sure you want to delete this student?');
     if (answer) {
         try { 
-            const res = await axios.delete(`http://localhost:8080/student/deleteStudent/${id}`);
+            const res = await axios.delete(`http://localhost:8080/student/deleteStudent/${id}`, { headers: {"Authorization" : `Bearer ${authToken}`} });
             console.log(res.data);
     
             //Temporary solution by refreshing the page

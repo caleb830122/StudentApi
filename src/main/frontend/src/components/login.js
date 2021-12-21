@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import login from "../service/authService"
 import "./login.css";
 
 const Login = () => {
@@ -16,10 +17,16 @@ const Login = () => {
       axios.post('http://localhost:8080/api/auth/signin', {username: email, password: password})
       .then(function(response) {
           console.log(response);
+          if (response.data.accessToken) {
+            localStorage.setItem("user", JSON.stringify(response.data));
+            alert("Login successful");
+            window.location.href = "http://localhost:3000/";
+          }
       })
       .catch(function(error) {
           console.log(error);
       })
+
     event.preventDefault();
   }
 
