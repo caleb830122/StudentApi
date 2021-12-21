@@ -2,7 +2,10 @@ import React from 'react';
 import { Form, Button} from 'react-bootstrap';
 import axios from 'axios';
 
-let authToken = JSON.parse(localStorage.getItem("user")).accessToken;
+let authToken = "";
+if (localStorage.getItem("user") != null) {
+    authToken = JSON.parse(localStorage.getItem("user")).accessToken;
+} 
 
 class StudentForm extends React.Component {
     

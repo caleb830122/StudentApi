@@ -2,19 +2,18 @@ import React, { useState } from "react";
 import axios from 'axios';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import login from "../service/authService"
 import "./login.css";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   function validateForm() {
-    return email.length > 0 && password.length > 0;
+    return username.length > 0 && password.length > 0;
   }
 
   function handleSubmit(event) {
-      axios.post('http://localhost:8080/api/auth/signin', {username: email, password: password})
+      axios.post('http://localhost:8080/api/auth/signin', {username: username, password: password})
       .then(function(response) {
           console.log(response);
           if (response.data.accessToken) {
@@ -25,6 +24,7 @@ const Login = () => {
       })
       .catch(function(error) {
           console.log(error);
+          alert("Login failed, please check your username and password");
       })
 
     event.preventDefault();
@@ -34,12 +34,11 @@ const Login = () => {
     <div className="Login">
       <Form onSubmit={handleSubmit}>
         <Form.Group className="group" size="lg" controlId="email">
-          <Form.Label>Email</Form.Label>
+          <Form.Label>Username</Form.Label>
           <Form.Control
-            autoFocus
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
         </Form.Group>
         <Form.Group className="group" size="lg" controlId="password">
@@ -54,6 +53,10 @@ const Login = () => {
           Login
         </Button>
       </Form>
+      <br />
+      <br />
+      <br />
+      <p>No account?</p><a href="http://localhost:3000/register">Register</a>
     </div>
   );
 }

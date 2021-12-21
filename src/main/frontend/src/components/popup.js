@@ -5,8 +5,10 @@ import profileIcon from '../images/profile.png'
 import axios from 'axios'
 import UpdateStudentPopup from './UpdateStudentPopup'
 
-let authToken = JSON.parse(localStorage.getItem("user")).accessToken;
-
+let authToken = "";
+if (localStorage.getItem("user") != null) {
+    authToken = JSON.parse(localStorage.getItem("user")).accessToken;
+} 
 function Popup(props) {
     return (props.trigger) ? (
         <div className="popup">

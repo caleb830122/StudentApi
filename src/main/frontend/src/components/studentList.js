@@ -5,7 +5,10 @@ import { Input } from 'semantic-ui-react'
 import Popup from './popup'
 import editButtonImg from '../images/edit.png'
 
-let authToken = JSON.parse(localStorage.getItem("user")).accessToken;
+let authToken = "";
+if (localStorage.getItem("user") != null) {
+    authToken = JSON.parse(localStorage.getItem("user")).accessToken;
+} 
 // Student List  
 const StudentList = () => {
     // const [stateStudent, setStudentState] = useState([]);
@@ -162,15 +165,6 @@ const EditButton = ( { idFromParent , firstNameFromParent, lastNameFromParent, m
     );  
 }
 
-
-// For Axio http request call with bearer token
-const config = {
-    headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).accessToken}` }
-};
-
-const bodyParameters = {
-   key: "value"
-};
 
 export default StudentList;
   

@@ -7,6 +7,7 @@ import Logout from './components/logout';
 import StudentList from "./components/studentList";
 import StudentForm from "./components/studentForm";
 import HomePanel from "./components/homePanel";
+import Register from './components/register';
 
 import { 
   BrowserRouter as Router,
@@ -31,6 +32,7 @@ const App = () => {
             } />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </Router>
     </div>

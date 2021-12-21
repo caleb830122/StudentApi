@@ -1,15 +1,8 @@
 import React from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { 
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link,
+  Link
 } from "react-router-dom";
-import Login from "./login"
-import HomePanel from "./homePanel";
-import StudentList from "./studentList";
-import StudentForm from "./studentForm"
 class NavBar extends React.Component {
 
   render() {
