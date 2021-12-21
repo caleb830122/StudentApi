@@ -25,8 +25,7 @@ class NavBar extends React.Component {
 
     } else {
     return (
-     
-        <div>
+      <div>
         <Navbar bg="myPurple" expand="lg" variant="dark" fixed="true">
           <Container>
             <Navbar.Brand as={Link} to={"/"}>
@@ -55,7 +54,7 @@ class NavBar extends React.Component {
             </Navbar.Collapse>
           </Container>
         </Navbar>
-        </div>
+      </div>
     );
     }
   }
