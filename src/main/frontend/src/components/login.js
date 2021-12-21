@@ -56,7 +56,7 @@ const Login = () => {
       <br />
       <br />
       <br />
-      <p>No account?</p><a href="http://localhost:3000/register">Register</a>
+      <p>Don't have an account?</p><a href="http://localhost:3000/register">Register</a>
     </div>
   );
 }
