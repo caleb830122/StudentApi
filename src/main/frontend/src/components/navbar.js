@@ -6,12 +6,12 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-
+import Login from "./login"
 import HomePanel from "./homePanel";
 import StudentList from "./studentList";
 import StudentForm from "./studentForm"
 class NavBar extends React.Component {
-  
+
   render() {
     return (
       <Router>
@@ -21,6 +21,7 @@ class NavBar extends React.Component {
             <Navbar.Brand as={Link} to={"/"}>
               Student Information System Portal (SISP)
             </Navbar.Brand>
+            <Nav.Link as={Link} to={"/login"}>Login</Nav.Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ms-auto">
@@ -54,7 +55,7 @@ class NavBar extends React.Component {
                 <StudentForm />
               </div>
               } />
-            
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
       </Router>
