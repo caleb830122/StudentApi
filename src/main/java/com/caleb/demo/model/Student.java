@@ -1,5 +1,7 @@
 package com.caleb.demo.model;
 
+import java.util.Comparator;
+
 import javax.persistence.*;
 
 @Entity
@@ -51,4 +53,21 @@ public class Student {
 		public void setMajor(String major) {
 			this.major = major;
 		}
+		
+		public static Comparator<Student> StudentFirstNameComparator  
+         = new Comparator<Student>() {
+
+			@Override
+			public int compare(Student student1, Student student2) {
+				String student1Firstname = student1.firstName.toLowerCase();
+				String student2Firstname = student2.firstName.toLowerCase();
+				return student1Firstname.compareTo(student2Firstname);
+			}
+			
+		};
+
+		
+		
+
+
 }
