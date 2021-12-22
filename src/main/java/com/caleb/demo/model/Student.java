@@ -54,6 +54,9 @@ public class Student {
 			this.major = major;
 		}
 		
+		/**
+		 * Comparator based on First Name
+		 */
 		public static Comparator<Student> StudentFirstNameComparator  
          = new Comparator<Student>() {
 
@@ -66,6 +69,35 @@ public class Student {
 			
 		};
 
+		/**
+		 * Comparator based on Last Name
+		 */
+		public static Comparator<Student> StudentLastNameComparator  
+         = new Comparator<Student>() {
+
+			@Override
+			public int compare(Student student1, Student student2) {
+				String student1Lastname = student1.lastName.toLowerCase();
+				String student2Lastname = student2.lastName.toLowerCase();
+				return student1Lastname.compareTo(student2Lastname);
+			}
+			
+		};
+		
+		/**
+		 * Comparator based on major
+		 */
+		public static Comparator<Student> StudentMajorComparator  
+        = new Comparator<Student>() {
+
+			@Override
+			public int compare(Student student1, Student student2) {
+				String student1Major = student1.major.toLowerCase();
+				String student2Major = student2.major.toLowerCase();
+				return student1Major.compareTo(student2Major);
+			}
+			
+		};
 		
 		
 

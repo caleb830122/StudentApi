@@ -120,12 +120,35 @@ public class StudentService {
 	 * Get all students from the database by the order of first name
 	 * @return Sorted list of student by first name
 	 */
-	public List<Student> getStudentInOrderByName() {
+	public List<Student> getStudentInOrderByFirstName() {
 		List<Student> tempList = (List<Student>) repo.findAll();
 		Collections.sort(tempList, Student.StudentFirstNameComparator);
 		
 		return tempList;
 	}
+	
+	/**
+	 * Get all students from the database by the order of Last name
+	 * @return Sorted list of student by first name
+	 */
+	public List<Student> getStudentInOrderByLastName() {
+		List<Student> tempList = (List<Student>) repo.findAll();
+		Collections.sort(tempList, Student.StudentLastNameComparator);
+		
+		return tempList;
+	}
+	
+	/**
+	 * Get all students from the database by the order of Last name
+	 * @return Sorted list of student by first name
+	 */
+	public List<Student> getStudentInOrderByMajor() {
+		List<Student> tempList = (List<Student>) repo.findAll();
+		Collections.sort(tempList, Student.StudentMajorComparator);
+		
+		return tempList;
+	}
+	
 	
 		
 }

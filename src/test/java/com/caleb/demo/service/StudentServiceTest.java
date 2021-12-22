@@ -167,7 +167,7 @@ class StudentServiceTest {
 	
 	@Test
 	void testGetStudentsByOrderOfFirstName() {
-		underTest.getStudentInOrderByName();
+		underTest.getStudentInOrderByFirstName();
 		
 	}
 

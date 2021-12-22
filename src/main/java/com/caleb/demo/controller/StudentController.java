@@ -90,7 +90,17 @@ public class StudentController {
 	
 	@GetMapping("/student/getStudentsByFirstName")
 	public ResponseEntity<?> getStudentByFirstName() {
-		return ResponseEntity.ok().body(studentService.getStudentInOrderByName());
+		return ResponseEntity.ok().body(studentService.getStudentInOrderByFirstName());
+	}
+	
+	@GetMapping("/student/getStudentsByLastName")
+	public ResponseEntity<?> getStudentByLastName() {
+		return ResponseEntity.ok().body(studentService.getStudentInOrderByLastName());
+	}
+	
+	@GetMapping("/student/getStudentsByMajor")
+	public ResponseEntity<?> getStudentByMajor() {
+		return ResponseEntity.ok().body(studentService.getStudentInOrderByMajor());
 	}
 	
 	
