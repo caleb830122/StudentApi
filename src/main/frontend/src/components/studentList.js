@@ -131,7 +131,7 @@ const StudentList = () => {
                                 setProfilesOrder("byMajor");
                             }}
                         >
-                            Last Name
+                            Major
                         </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
