@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./insuranceProfile.css";
 
 let usernameFromLocalStorage = "";
 if (localStorage.getItem("user") != null) {
@@ -38,10 +39,12 @@ export const InsuranceProfile = () => {
     const Policy = ({ userPolicy, setUserPolicy }) => {
         return userPolicy.map((d) => {
             return (
-                <div className="policyProfile" key={d.policy_number}>
-                    <div>
+                <div>
+                    <div className="policyProfile" key={d.policy_number}>
                         <h1>Homeowners Policy</h1>
-                        <h2>Username: {d.username}</h2>
+                        <h2>{d.username}</h2>
+                    </div>
+                    <div className="policyProfile">
                         <p>Policy #: {d.policy_number}</p>
                         <p>
                             Effective: {d.effective_start.substring(0, 10)} ~{" "}
