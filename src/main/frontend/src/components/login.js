@@ -4,10 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Avatar from "@mui/material/Avatar";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "./login.css";
-
-const theme = createTheme();
 
 const Login = () => {
     const [username, setUsername] = useState("");

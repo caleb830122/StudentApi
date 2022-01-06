@@ -45,13 +45,16 @@ class NavBar extends React.Component {
                                     <Nav.Link as={Link} to={"/search"}>
                                         Search
                                     </Nav.Link>
-                                    <Nav.Link as={Link} to={"/newStudent"}>
+                                    {/* <Nav.Link as={Link} to={"/newStudent"}>
                                         Add new student
-                                    </Nav.Link>
+                                    </Nav.Link> */}
                                     <NavDropdown
                                         title="More"
                                         id="basic-nav-dropdown"
                                     >
+                                        <NavDropdown.Item href="/newStudent">
+                                            Add new student
+                                        </NavDropdown.Item>
                                         <NavDropdown.Item href="/insuranceProfile">
                                             Your Insurance Profile
                                         </NavDropdown.Item>

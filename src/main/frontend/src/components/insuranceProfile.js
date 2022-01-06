@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import "./insuranceProfile.css";
+import CurrencyInput from "react-currency-input-field";
 
+// Get username from localStorage
 let usernameFromLocalStorage = "";
 if (localStorage.getItem("user") != null) {
     usernameFromLocalStorage = JSON.parse(
@@ -11,6 +14,7 @@ if (localStorage.getItem("user") != null) {
 
 export const InsuranceProfile = () => {
     const [userPolicy, setUserPolicy] = useState([]);
+    const [propertyValueChange, setPropertyValueChange] = useState("");
 
     const fetchUserPolicy = () => {
         let URL = `http://localhost:8082/insurancePolicies/${usernameFromLocalStorage}`;
@@ -32,6 +36,18 @@ export const InsuranceProfile = () => {
         });
     };
 
+    const updatePropertyValue = async () => {
+        let URL = `http://localhost:8082/insurancePolicies/${usernameFromLocalStorage}`;
+        await axios({
+            method: "patch",
+            url: URL,
+            data: {
+                property_value: propertyValueChange,
+            },
+        });
+        window.location.reload();
+    };
+
     useEffect(() => {
         fetchUserPolicy();
     }, []);
@@ -39,8 +55,9 @@ export const InsuranceProfile = () => {
     const Policy = ({ userPolicy, setUserPolicy }) => {
         return userPolicy.map((d) => {
             return (
-                <div>
-                    <div className="policyProfile" key={d.policy_number}>
+                <div key={d.policy_number}>
+                    <div className="policyProfile">
+                        <HomeRoundedIcon fontSize="large" />
                         <h1>Homeowners Policy</h1>
                         <h2>{d.username}</h2>
                     </div>
@@ -61,6 +78,24 @@ export const InsuranceProfile = () => {
     return (
         <div>
             <Policy userPolicy={userPolicy} setUserPolicy={setUserPolicy} />
+            <label>
+                If your property value has changed, please update it here:
+            </label>
+            <br />
+            {/* <input
+                type="text"
+                placeholder="New property value"
+                onChange={(e) => setPropertyValueChange(e.target.value)}
+            /> */}
+            <CurrencyInput
+                prefix="$"
+                id="input-example"
+                name="input-name"
+                placeholder="Please enter a number"
+                decimalsLimit={2}
+                onChange={(e) => setPropertyValueChange(e.target.value)}
+            />
+            <button onClick={updatePropertyValue}>Update</button>
         </div>
     );
 };
