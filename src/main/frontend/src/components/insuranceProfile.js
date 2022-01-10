@@ -3,6 +3,8 @@ import axios from "axios";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import "./insuranceProfile.css";
 import CurrencyInput from "react-currency-input-field";
+import InsuranceNavbar from "./insuranceNavbar";
+import { Routes, Route } from "react-router-dom";
 
 // Get username from localStorage
 let usernameFromLocalStorage = "";
@@ -75,28 +77,39 @@ export const InsuranceProfile = () => {
         });
     };
 
-    return (
-        <div>
-            <Policy userPolicy={userPolicy} setUserPolicy={setUserPolicy} />
-            <label>
-                If your property value has changed, please update it here:
-            </label>
-            <br />
-            {/* <input
+    const PolicyPanel = () => {
+        return (
+            <div>
+                <Policy userPolicy={userPolicy} setUserPolicy={setUserPolicy} />
+                <label>
+                    If your property value has changed, please update it here:
+                </label>
+                <br />
+                {/* <input
                 type="text"
                 placeholder="New property value"
                 onChange={(e) => setPropertyValueChange(e.target.value)}
             /> */}
-            <CurrencyInput
-                prefix="$"
-                id="input-example"
-                name="input-name"
-                placeholder="Please enter a number"
-                decimalsLimit={2}
-                onChange={(e) => setPropertyValueChange(e.target.value)}
-            />
-            <button onClick={updatePropertyValue}>Update</button>
-        </div>
+                <CurrencyInput
+                    prefix="$"
+                    id="input-example"
+                    name="input-name"
+                    placeholder="Please enter a number"
+                    decimalsLimit={2}
+                    onChange={(e) => setPropertyValueChange(e.target.value)}
+                />
+                <button onClick={updatePropertyValue}>Update</button>
+            </div>
+        );
+    };
+
+    return (
+        <>
+            <InsuranceNavbar />
+            <Routes>
+                <Route path="/policyPanel" element={<PolicyPanel />} />
+            </Routes>
+        </>
     );
 };
 
