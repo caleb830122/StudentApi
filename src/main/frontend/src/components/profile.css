@@ -1,11 +1,16 @@
 .profile {
-    padding: 3em;
     text-align: center;
     border-radius: 25px;
     border: 2px solid #2a4786;
+    transition: transform 0.2s;
+    padding: 20px;
     max-width: 700px;
     margin: 0 auto;
     margin-top: 2rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.profile:hover {
+    transform: scale(1.02);
 }
 
 .profile-info {
@@ -13,7 +18,13 @@
     text-align: left;
     border-radius: 25px;
     border: 2px solid #2a4786;
+    transition: transform 0.2s;
     max-width: 700px;
     margin: 0 auto;
     margin-top: 2rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.profile-info:hover {
+    transform: scale(1.02);
 }
