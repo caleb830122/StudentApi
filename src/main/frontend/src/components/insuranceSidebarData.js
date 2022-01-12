@@ -1,8 +1,8 @@
 import React from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import * as IoIcons from "react-icons/io";
 
+// Sidebar item data
 export const SidebarData = [
     {
         title: "Your Policy",
@@ -11,15 +11,15 @@ export const SidebarData = [
         cName: "nav-text",
     },
     {
-        title: "Personal Information",
-        path: "/",
-        icon: <AiIcons.AiFillHome />,
+        title: "Your Claims",
+        path: "/insuranceProfile/claimsPanel",
+        icon: <AiIcons.AiFillFile />,
         cName: "nav-text",
     },
     {
-        title: "Claims",
-        path: "/",
-        icon: <AiIcons.AiFillHome />,
+        title: "Your Profile",
+        path: "/insuranceProfile/profilePanel",
+        icon: <FaIcons.FaUserCircle />,
         cName: "nav-text",
     },
 ];

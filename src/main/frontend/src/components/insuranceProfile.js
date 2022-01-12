@@ -5,6 +5,7 @@ import "./insuranceProfile.css";
 import CurrencyInput from "react-currency-input-field";
 import InsuranceNavbar from "./insuranceNavbar";
 import { Routes, Route } from "react-router-dom";
+import Profile from "./profile";
 
 // Get username from localStorage
 let usernameFromLocalStorage = "";
@@ -108,6 +109,7 @@ export const InsuranceProfile = () => {
             <InsuranceNavbar />
             <Routes>
                 <Route path="/policyPanel" element={<PolicyPanel />} />
+                <Route path="/profilePanel" element={<Profile />} />
             </Routes>
         </>
     );

@@ -3,12 +3,6 @@ import axios from "axios";
 
 const BlogPage = () => {
     const [posts, setPosts] = useState([]);
-    // const fetchAllPosts = () => {
-    //     axios.get(`http://localhost:8082/posts`).then((res) => {
-    //         console.log(res);
-    //         // set userProfile state object with response data
-    //     });
-    // };
     const getPosts = () => {
         axios.get(`http://localhost:8082/posts`).then((res) => {
             console.log(res);
@@ -16,13 +10,6 @@ const BlogPage = () => {
             // set userProfile state object with response data
         });
     };
-    // useEffect(() => {
-    // axios.get(`http://localhost:8082/posts`).then((res) => {
-    //     console.log(res);
-    //     setPosts(res.data);
-    //     // set userProfile state object with response data
-    // });
-    // });
     return (
         <div>
             <button onClick={getPosts}>Get posts</button>

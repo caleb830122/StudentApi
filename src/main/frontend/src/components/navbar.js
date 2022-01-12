@@ -55,7 +55,7 @@ class NavBar extends React.Component {
                                         <NavDropdown.Item href="/newStudent">
                                             Add new student
                                         </NavDropdown.Item>
-                                        <NavDropdown.Item href="/insuranceProfile/">
+                                        <NavDropdown.Item href="/insuranceProfile/policyPanel">
                                             Your Insurance Profile
                                         </NavDropdown.Item>
                                         <NavDropdown.Item href="#action/3.2">

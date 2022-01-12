@@ -1,0 +1,19 @@
+.profile {
+    padding: 3em;
+    text-align: center;
+    border-radius: 25px;
+    border: 2px solid #2a4786;
+    max-width: 700px;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.profile-info {
+    padding: 3em;
+    text-align: left;
+    border-radius: 25px;
+    border: 2px solid #2a4786;
+    max-width: 700px;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
