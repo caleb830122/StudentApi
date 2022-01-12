@@ -1,7 +1,11 @@
 package com.caleb.demo.service;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.Collections;
+import java.util.Comparator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -110,4 +114,41 @@ public class StudentService {
 	public Integer getStudentCount() {
 		return (int) repo.count();
 	}
+	
+	
+	/**
+	 * Get all students from the database by the order of first name
+	 * @return Sorted list of student by first name
+	 */
+	public List<Student> getStudentInOrderByFirstName() {
+		List<Student> tempList = (List<Student>) repo.findAll();
+		Collections.sort(tempList, Student.StudentFirstNameComparator);
+		
+		return tempList;
+	}
+	
+	/**
+	 * Get all students from the database by the order of Last name
+	 * @return Sorted list of student by first name
+	 */
+	public List<Student> getStudentInOrderByLastName() {
+		List<Student> tempList = (List<Student>) repo.findAll();
+		Collections.sort(tempList, Student.StudentLastNameComparator);
+		
+		return tempList;
+	}
+	
+	/**
+	 * Get all students from the database by the order of Last name
+	 * @return Sorted list of student by first name
+	 */
+	public List<Student> getStudentInOrderByMajor() {
+		List<Student> tempList = (List<Student>) repo.findAll();
+		Collections.sort(tempList, Student.StudentMajorComparator);
+		
+		return tempList;
+	}
+	
+	
+		
 }

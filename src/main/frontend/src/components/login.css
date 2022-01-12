@@ -1,0 +1,19 @@
+@media all and (min-width: 480px) {
+    .Login {
+        margin: 0 auto;
+        padding: 60px 0;
+    }
+
+    .Login form {
+        margin: 0 auto;
+        max-width: 320px;
+    }
+
+    .Login .group {
+        padding: 10px;
+    }
+}
+
+.LoginForm .Avatar {
+    margin: 0 auto;
+}

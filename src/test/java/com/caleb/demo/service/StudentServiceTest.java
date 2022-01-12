@@ -164,5 +164,11 @@ class StudentServiceTest {
 		
 		verify(studentRepo).count();
 	}
+	
+	@Test
+	void testGetStudentsByOrderOfFirstName() {
+		underTest.getStudentInOrderByFirstName();
+		
+	}
 
 }

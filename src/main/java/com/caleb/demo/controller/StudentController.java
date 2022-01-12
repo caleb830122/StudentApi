@@ -87,4 +87,21 @@ public class StudentController {
 	public ResponseEntity<?> getStudentCount() {
 		return ResponseEntity.ok().body(studentService.getStudentCount());
 	}
+	
+	@GetMapping("/student/getStudentsByFirstName")
+	public ResponseEntity<?> getStudentByFirstName() {
+		return ResponseEntity.ok().body(studentService.getStudentInOrderByFirstName());
+	}
+	
+	@GetMapping("/student/getStudentsByLastName")
+	public ResponseEntity<?> getStudentByLastName() {
+		return ResponseEntity.ok().body(studentService.getStudentInOrderByLastName());
+	}
+	
+	@GetMapping("/student/getStudentsByMajor")
+	public ResponseEntity<?> getStudentByMajor() {
+		return ResponseEntity.ok().body(studentService.getStudentInOrderByMajor());
+	}
+	
+	
 }

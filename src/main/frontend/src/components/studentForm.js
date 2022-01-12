@@ -2,6 +2,11 @@ import React from 'react';
 import { Form, Button} from 'react-bootstrap';
 import axios from 'axios';
 
+let authToken = "";
+if (localStorage.getItem("user") != null) {
+    authToken = JSON.parse(localStorage.getItem("user")).accessToken;
+} 
+
 class StudentForm extends React.Component {
     
     // Traditional way of handling state
@@ -67,7 +72,7 @@ class StudentForm extends React.Component {
             event.preventDefault();
             console.log(JSON.stringify(this.state));
             const formBody = JSON.parse(JSON.stringify(this.state));
-            axios.post("http://localhost:8080/student/addStudent", formBody).then(res => {
+            axios.post("http://localhost:8080/student/addStudent", formBody,  { headers: {"Authorization" : `Bearer ${authToken}`} }).then(res => {
               console.log(res); 
               alert("Successful"); 
             }).catch(err => {alert(err);});
