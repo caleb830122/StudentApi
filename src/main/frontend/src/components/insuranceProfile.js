@@ -40,6 +40,7 @@ export const InsuranceProfile = () => {
     };
 
     const updatePropertyValue = async () => {
+        console.log("Update clicked");
         let URL = `http://localhost:8082/insurancePolicies/${usernameFromLocalStorage}`;
         await axios({
             method: "patch",
@@ -78,37 +79,69 @@ export const InsuranceProfile = () => {
         });
     };
 
-    const PolicyPanel = () => {
-        return (
-            <div>
-                <Policy userPolicy={userPolicy} setUserPolicy={setUserPolicy} />
-                <label>
-                    If your property value has changed, please update it here:
-                </label>
-                <br />
-                {/* <input
-                type="text"
-                placeholder="New property value"
-                onChange={(e) => setPropertyValueChange(e.target.value)}
-            /> */}
-                <CurrencyInput
-                    prefix="$"
-                    id="input-example"
-                    name="input-name"
-                    placeholder="Please enter a number"
-                    decimalsLimit={2}
-                    onChange={(e) => setPropertyValueChange(e.target.value)}
-                />
-                <button onClick={updatePropertyValue}>Update</button>
-            </div>
-        );
-    };
+    // This component got rerendered when typing something in the textbox, therefore unfocus the textbox
+    // Try to figure it out later
+
+    // const PolicyPanel = () => {
+    //     return (
+    //         <div>
+    //             <Policy userPolicy={userPolicy} setUserPolicy={setUserPolicy} />
+    //             <label>
+    //                 If your property value has changed, please update it here:
+    //             </label>
+    //             <br />
+    //             <input
+    //                 type="text"
+    //                 placeholder="New property value"
+    //                 onChange={(e) => setPropertyValueChange(e.target.value)}
+    //             />
+    //             <CurrencyInput
+    //                 prefix="$"
+    //                 id="input-example"
+    //                 name="input-name"
+    //                 placeholder="Please enter a number"
+    //                 decimalsLimit={2}
+    //                 onChange={(e) => setPropertyValueChange(e.target.value)}
+    //             />
+    //             <button onClick={updatePropertyValue}>Update</button>
+    //         </div>
+    //     );
+    // };
 
     return (
         <>
             <InsuranceNavbar />
             <Routes>
-                <Route path="/policyPanel" element={<PolicyPanel />} />
+                <Route
+                    path="/policyPanel"
+                    element={
+                        <div>
+                            <Policy
+                                userPolicy={userPolicy}
+                                setUserPolicy={setUserPolicy}
+                            />
+                            <label>
+                                If your property value has changed, please
+                                update it here:
+                            </label>
+                            <br />
+                            <CurrencyInput
+                                prefix="$"
+                                id="input-example"
+                                name="input-name"
+                                className="property-update"
+                                placeholder="Please enter your current property value"
+                                decimalsLimit={2}
+                                onChange={(e) =>
+                                    setPropertyValueChange(e.target.value)
+                                }
+                            />
+                            <button onClick={updatePropertyValue}>
+                                Update
+                            </button>
+                        </div>
+                    }
+                />
                 <Route path="/profilePanel" element={<Profile />} />
             </Routes>
         </>
