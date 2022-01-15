@@ -11,39 +11,31 @@ if (localStorage.getItem("user") != null) {
         localStorage.getItem("user")
     ).username;
 }
-let profileImage64 = "";
 const Profile = () => {
+    const [pic, setPic] = useState("");
+    let profileImage64 = "";
     const fetchUserPicture = () => {
         let URL = `http://localhost:8082/img/${usernameFromLocalStorage}`;
         axios.get(URL).then((res) => {
-            profileImage64 = res.data.img64;
-            console.log(profileImage64);
-            // set userProfile state object with response data
-            // setUserPolicy(
-            //     res.data.map((d) => {
-            //         return {
-            //             username: d.username,
-            //             policy_number: d.policy_number,
-            //             effective_start: d.effective_start,
-            //             effective_end: d.effective_end,
-            //             property_value: d.property_value,
-            //             premium: d.premium,
-            //         };
-            //     })
-            // );
+            console.log(res.data);
+            profileImage64 = res.data;
+            setPic(profileImage64[0]);
+            console.log(profileImage64[0]);
         });
     };
+
     useEffect(() => fetchUserPicture(), []);
     return (
         <>
             <div className="profile">
-                <IconContext.Provider value={{ color: "#3c5076", size: "200" }}>
+                {/* <IconContext.Provider value={{ color: "#3c5076", size: "200" }}>
                     <FaIcons.FaUserCircle />
-                </IconContext.Provider>
-                {/* <img
-                    src={{ uri: "data:image/png;base64," + profileImage64 }}
+                </IconContext.Provider> */}
+                <img
+                    className="profile-pic"
+                    src={`${pic}`}
                     alt="profile image"
-                /> */}
+                />
                 <h1>{usernameFromLocalStorage}</h1>
             </div>
             <div className="profile-info">
@@ -51,7 +43,6 @@ const Profile = () => {
                 <h4>Cellphone</h4>
                 <h4>Address</h4>
             </div>
-            {`${profileImage64}`}
         </>
     );
 };

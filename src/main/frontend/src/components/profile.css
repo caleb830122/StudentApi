@@ -28,3 +28,8 @@
 .profile-info:hover {
     transform: scale(1.02);
 }
+
+.profile-pic {
+    width: 200px;
+    border-radius: 50%;
+}
