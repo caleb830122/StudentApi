@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Parser from "html-react-parser";
 import axios from "axios";
 import { IconContext } from "react-icons";
 import * as FaIcons from "react-icons/fa";
@@ -13,29 +12,49 @@ if (localStorage.getItem("user") != null) {
 }
 const Profile = () => {
     const [pic, setPic] = useState("");
+    const [picExist, setPicExist] = useState(false);
     let profileImage64 = "";
     const fetchUserPicture = () => {
         let URL = `http://localhost:8082/img/${usernameFromLocalStorage}`;
-        axios.get(URL).then((res) => {
-            console.log(res.data);
-            profileImage64 = res.data;
-            setPic(profileImage64[0]);
-            console.log(profileImage64[0]);
-        });
+        axios
+            .get(URL)
+            .then((res) => {
+                profileImage64 = res.data;
+                setPic(profileImage64[0]);
+                setPicExist(true);
+            })
+            .catch(function (err) {
+                console.log("Error", err.message);
+            });
     };
 
     useEffect(() => fetchUserPicture(), []);
-    return (
-        <>
-            <div className="profile">
-                {/* <IconContext.Provider value={{ color: "#3c5076", size: "200" }}>
-                    <FaIcons.FaUserCircle />
-                </IconContext.Provider> */}
+
+    const ProfilePic = () => {
+        if (picExist) {
+            return (
                 <img
                     className="profile-pic"
                     src={`${pic}`}
                     alt="profile image"
                 />
+            );
+        } else {
+            return (
+                <>
+                    <IconContext.Provider
+                        value={{ color: "#3c5076", size: "200" }}
+                    >
+                        <FaIcons.FaUserCircle />
+                    </IconContext.Provider>
+                </>
+            );
+        }
+    };
+    return (
+        <>
+            <div className="profile">
+                <ProfilePic />
                 <h1>{usernameFromLocalStorage}</h1>
             </div>
             <div className="profile-info">
